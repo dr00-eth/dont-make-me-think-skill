@@ -1,6 +1,6 @@
 ---
 name: dont-make-me-think
-description: "Apply Steve Krug's \"Don't Make Me Think\" usability principles to web and mobile interfaces — reducing cognitive load, making pages self-evident, designing for scanning, fixing confusing navigation, and cutting needless words. Use this skill whenever the user is building OR reviewing any UI and cares about clarity, intuitiveness, or ease of use: when a page is \"confusing,\" users \"can't figure out what to do\" or \"can't find\" something, labels/links/buttons are ambiguous, copy is bloated, navigation is unclear, or someone asks for a usability/UX review, a \"Krug-style\" critique, or wants an interface to be more obvious and self-explanatory. This is about whether users can effortlessly understand and use the interface (cognitive load, wording, scannability, conventions) — reach for it even when the user only says \"make this clearer,\" \"this feels clunky,\" \"improve the UX,\" or \"audit this flow,\" not just when they name the book."
+description: "Apply Steve Krug's \"Don't Make Me Think\" usability principles to web and mobile interfaces — reducing cognitive load, removing needless choices, making pages self-evident, designing for scanning, fixing confusing navigation, and cutting clutter. Use this skill whenever the user is building OR reviewing any UI — including dense app UIs like dashboards, settings panels, multi-section forms, and wizards — and cares about clarity, simplicity, or ease of use: when a screen is \"confusing\" or \"overwhelming,\" has too many options/fields/steps, users \"can't figure out what to do\" or \"can't find\" something, controls are redundant or ambiguous, copy is bloated, navigation is unclear, or someone asks for a usability/UX review, a \"Krug-style\" critique, or wants an interface that's simpler and more self-explanatory. This is about whether users can effortlessly understand and use the interface (cognitive load, number of decisions, wording, scannability, conventions) — reach for it even when the user only says \"make this clearer,\" \"simplify this,\" \"this feels clunky,\" \"too much going on,\" \"improve the UX,\" or \"audit this flow,\" not just when they name the book."
 metadata:
   category: design
 ---
@@ -15,6 +15,12 @@ real person, glancing at this screen while distracted, instantly understand what
 what they can do, and how to do it — without stopping to think? When the work is about
 visual taste, animation, or "make it beautiful," prefer a design/polish skill instead.
 When it's about whether people can *figure the thing out*, this is the right tool.
+
+It applies just as much to dense application UIs — dashboards, settings panels,
+multi-section forms, wizards, checkout flows — as it does to marketing pages. In fact the
+heaviest cognitive load usually lives in those dense screens, and the most valuable
+Krug-style move there is often **simplification: having less on the screen**, not just
+phrasing what's there more clearly.
 
 ## The one idea everything hangs on
 
@@ -79,9 +85,25 @@ mark.
   short paragraphs, bulleted lists, and **highlighted key terms**. One idea per
   paragraph. The heading structure should let someone understand the page from headings
   alone.
-- **Omit needless words.** Krug: "Get rid of half the words on each page, then get rid of
-  half of what's left." Cut happy talk ("Welcome to our website! We're so glad you're
-  here") and obvious instructions. Less words = less noise = the real content stands out.
+- **Omit needless words — and needless choices.** Krug: "Get rid of half the words on each
+  page, then get rid of half of what's left." Cut happy talk ("Welcome to our website!
+  We're so glad you're here") and obvious instructions. Then apply the same knife to
+  *controls*: every field, toggle, option, and step is a decision the user has to process,
+  and decisions are heavier than words. On a dense form or settings screen, the
+  highest-leverage simplification is almost always to **have fewer things on the screen** —
+  for each control ask: can it be **removed**, given a sensible **default**, **derived**
+  from something else, or **deferred** behind progressive disclosure? Fewer, clearer
+  decisions beat more, finer-grained ones.
+- **Hunt for redundant and overlapping controls.** When two controls appear to set the
+  same thing (e.g. a set of radio buttons *and* a dropdown that both decide "when ordering
+  stops"), the user is left thinking "which one wins?" — a pure question mark, and a common
+  one in app UIs that grew feature by feature. Collapse them into a single source of truth.
+  A control duplicated across a "simple" view and an "Advanced" section is the same bug.
+- **Default the common case; defer the rare one.** Pick smart defaults so a typical user
+  can accept the screen as-is and only touch what's unusual for them. Push rarely-needed
+  options behind progressive disclosure (an "Advanced" section that's *collapsed by
+  default* and doesn't duplicate anything already shown). The goal is that the screen looks
+  simple to the 90% and is still complete for the 10%.
 - **Make clicks mindless.** It's not about *minimizing the number* of clicks — it's that
   each click should be an unambiguous, no-thought choice. Three obvious clicks beat one
   click the user has to deliberate over. Don't agonize over click counts; agonize over
@@ -120,9 +142,21 @@ a "is this confusing?" debate, suggest a 15-minute hallway test over more theori
 Krug is explicitly anti-dogma. These are **heuristics for reducing cognitive load, not
 commandments.** The real test is always "does this make the user think?" — not "did we
 follow the rule?" If a guideline here would, in a specific case, *increase* confusion,
-the guideline loses. Reason from the user's experience, cite the specific question mark
-you're removing, and don't pad a review with rule-citations that don't actually help
-anyone. Good usability work is invisible; aim for the user never noticing how easy it was.
+the guideline loses. Reason from the user's experience and cite the specific question mark
+you're removing.
+
+Two failure modes to avoid, in tension with each other:
+
+- **Don't pad.** Don't bury a review under rule-citations that don't help anyone; three
+  real problems beat thirty restated guidelines.
+- **Don't pull punches.** Avoiding padding does *not* mean softening genuine findings. When
+  a screen carries real, heavy cognitive load — too many decisions, redundant controls, a
+  wall of options — say so plainly and propose concrete cuts, even if that means
+  recommending the design be substantially simplified rather than tweaked. "Looks mostly
+  fine, minor wording nits" is the wrong answer for an overloaded screen. The honest,
+  useful move is to name the load and show what to remove.
+
+Good usability work is invisible; aim for the user never noticing how easy it was.
 
 ## Reference files
 

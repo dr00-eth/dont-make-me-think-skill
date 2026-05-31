@@ -101,16 +101,61 @@ choose a category or scope before searching unless it's genuinely necessary.
 
 ## Forms
 
-Forms are where vague labels and unclear requirements cost the most:
+Forms and settings screens are where cognitive load piles up fastest, because every field
+is a decision. The first job is **reducing the number of decisions**; clear labels and good
+errors come after that.
 
-- **Label every field unambiguously**, and place the label where its association is
-  obvious.
-- **Ask only for what you need.** Every extra field is friction and a small insult ("why
-  do they need my phone number?"). Cutting fields is a usability win.
+**Reduce the load first:**
+
+- **Cut fields and options.** Ask only for what you genuinely need right now. Every extra
+  field is friction and a small insult ("why do they need my phone number?"). Cutting is
+  the highest-leverage move.
+- **Default the common case.** Pre-select the choice most users want so they can leave it
+  alone. A screen the typical user can accept as-is feels effortless even if it's capable
+  of a lot.
+- **Derive instead of asking.** If the system can compute or infer a value (a timezone, a
+  total, an end time from a start time + duration), don't make the user supply it.
+- **Defer the rare stuff** behind progressive disclosure — a collapsed "Advanced" section
+  for options few people need. Crucially, **don't duplicate** a control in both the main
+  view and the advanced one; pick one home for each setting.
+- **Eliminate redundant/overlapping controls.** If two controls can set the same outcome,
+  users must reason about how they interact. Collapse them to a single source of truth.
+
+**Then make what remains clear:**
+
+- **Label every field unambiguously**, in the user's words, and place the label where its
+  association is obvious.
 - **State requirements up front** (password rules, accepted formats) rather than punishing
   users with an error after they submit.
 - **Make errors recoverable and specific**: say what's wrong, where, and how to fix it —
   in plain language, next to the field.
+
+### Worked example: a dense scheduling form
+
+A "Schedule pickup window" form shows, all at once: name, type, fulfillment mode, status,
+date, start time, end time, two radio groups for when ordering opens and closes, *and* an
+expanded "Advanced: when ordering stops" dropdown that re-decides the same thing the
+"stop accepting orders" radios already cover, plus a notes box. That's ~10 decisions on
+one screen, and one of them is redundant.
+
+Krug-style pass:
+
+- **Merge the redundancy:** the "Stop accepting orders" radios and the "Advanced: when
+  ordering stops" dropdown both decide when ordering closes. Keep one. (Before: two
+  controls, "which one wins?"; After: a single "Stop accepting orders" control.)
+- **Default the common case:** most windows "open immediately" and "stop when pickup
+  starts" — make those the defaults so the whole ordering-schedule section can sit
+  untouched, and only expands when the user wants something custom.
+- **Defer, don't duplicate:** collapse the advanced option by default instead of showing it
+  pre-expanded next to the radios that already cover it.
+- **Derive where possible:** the "Customers can order through 10:00 AM for pickup
+  Jun 3…" summary is good — it's derived, not asked. Keep that pattern; it replaces
+  controls with a plain-language confirmation.
+- **Plain labels:** "Window," "Fulfillment Mode" are internal terms; prefer the customer's
+  words ("Pickup or delivery?") where the user-facing meaning is clearer.
+
+Net: ~10 decisions drop to ~3–4 the user actually has to make, and the "which control
+wins?" question disappears. That structural cut matters more than any wording tweak.
 
 ## Omitting needless words in practice
 

@@ -18,20 +18,49 @@ loud for the screen/flow. Each "I'm not sure" is a usability finding:
 6. **What do these labels mean?** Any jargon, cute names, or ambiguous links?
 7. **Is anything making me work needlessly?** Happy talk, clutter, redundant steps,
    over-long copy, unnecessary form fields?
+8. **How many decisions is this screen actually asking me to make — and are any of them
+   redundant?** (See "Count the load" below. This is the most important question on dense
+   forms, settings, and wizards, and the one most often missed.)
 
 This test *is* the review. Findings fall out of the questions a real user can't answer.
+
+## Count the load (do this on every dense screen)
+
+On a form, settings panel, dashboard, or wizard, the biggest usability lever is rarely
+wording — it's the **number of decisions**. Make the load explicit:
+
+1. **Enumerate every decision** the screen asks the user to make — each field, toggle,
+   radio group, dropdown, and step. Literally count them.
+2. For each one, ask the **reduction questions**:
+   - **Remove** — does this need to exist at all, or is it here because it was easy to add?
+   - **Default** — can a sensible default let the typical user skip it entirely?
+   - **Derive** — can the system compute this from something it already knows?
+   - **Defer** — is this a rare/advanced option that belongs behind collapsed progressive
+     disclosure rather than in the main flow?
+3. **Flag redundancy explicitly.** Look for two controls that set the same thing (a radio
+   group *and* a dropdown deciding the same behavior, or a setting that appears in both the
+   main view and an "Advanced" section). Each one forces a "which one wins?" question and
+   should collapse to a single control.
+
+The output of this pass is a concrete simplification proposal — "this screen asks ~9
+decisions; 3 can be defaulted, 2 are redundant and should merge, 1 is advanced and should
+collapse, leaving ~3 the user actually needs to touch." That is usually the single most
+valuable thing in the whole review, so don't soften it.
 
 ## Workflow
 
 1. **Establish context.** What is it, who's the user, what's the top task they're trying to
    accomplish? A review without a user goal is just decoration critique.
 2. **Run the self-evidence test** on each key screen/step of the flow.
-3. **Walk the primary task end to end**, noting every point where you (as the stand-in
+3. **Count the load** on any dense screen (forms, settings, wizards) — enumerate the
+   decisions and run the reduction questions. Don't skip this; it's where the biggest wins
+   usually hide.
+4. **Walk the primary task end to end**, noting every point where you (as the stand-in
    user) have to stop and think. These pause-points are the raw findings.
-4. **Check mobile** if in scope — read `mobile-usability.md` and re-run the test on a small
+5. **Check mobile** if in scope — read `mobile-usability.md` and re-run the test on a small
    screen, watching for hidden nav, tiny targets, and reflow damage.
-5. **Rank and write up** using the format below.
-6. **Recommend a real usability test** when appropriate. Your audit is an expert review —
+6. **Rank and write up** using the format below.
+7. **Recommend a real usability test** when appropriate. Your audit is an expert review —
    valuable, but no substitute for watching real users. If the team is debating what's
    "intuitive," say so and suggest a quick 3-person hallway test.
 
@@ -59,8 +88,16 @@ words.
 - What it is, the target user, and the primary task evaluated.
 
 ## Verdict
-- 2–4 sentences: overall, how much thinking does this interface demand? What's the
+- 2–4 sentences: overall, how much thinking does this interface demand? For a dense
+  screen, state the rough decision-count and the biggest opportunity to cut it. What's the
   single most important thing to fix?
+
+## Simplify (for dense forms / settings / wizards)
+- The result of the "Count the load" pass: which decisions can be removed, defaulted,
+  derived, deferred, or merged, and roughly how many the user would actually be left with.
+- Lead with this when the core problem is overload — it usually matters more than any
+  individual wording or layout finding. Omit this section only for screens that genuinely
+  aren't decision-dense.
 
 ## Findings
 For each issue, in severity order:
